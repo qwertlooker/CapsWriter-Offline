@@ -65,6 +65,7 @@ class ClientState:
     processor: Any = None
     mouse_handler: Any = None
     udp_controller: Any = None
+    listening_overlay: Any = None
 
     recording: bool = False
     recording_start_time: float = 0.0
@@ -117,6 +118,11 @@ class ClientState:
         self.recording = False
         self.recording_start_time = 0.0
         self.audio_files.clear()
+        if self.listening_overlay:
+            try:
+                self.listening_overlay.hide()
+            except Exception:
+                pass
         
         logger.debug("客户端状态重置完成")
     

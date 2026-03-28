@@ -235,6 +235,9 @@ class ResultProcessor:
         if not message['is_final']:
             return
 
+        if self.state.listening_overlay:
+            self.state.listening_overlay.hide()
+
         # 繁体转换
         if Config.traditional_convert:
             try:
@@ -355,6 +358,12 @@ class ResultProcessor:
     
     def _cleanup(self) -> None:
         """清理资源"""
+        if self.state.listening_overlay:
+            try:
+                self.state.listening_overlay.hide()
+            except Exception:
+                pass
+
         if self.state.websocket is not None:
             try:
                 if self.state.websocket.closed:
