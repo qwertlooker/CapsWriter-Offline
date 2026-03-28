@@ -10,6 +10,7 @@ from util.client.ui import TipsDisplay
 from util.hotword import get_hotword_manager
 from util.llm.llm_handler import init_llm_system
 from util.client.audio import AudioStreamManager
+from util.client.ui import ListeningOverlayManager
 from util.client.shortcut.shortcut_config import Shortcut
 from util.client.shortcut.shortcut_manager import ShortcutManager
 from util.tools.empty_working_set import empty_current_working_set
@@ -100,6 +101,10 @@ def setup_client_components(base_dir):
 
     # 2. UI 提示
     TipsDisplay.show_mic_tips()
+    if Config.enable_listening_overlay:
+        state.listening_overlay = ListeningOverlayManager()
+    else:
+        state.listening_overlay = None
 
     # 3. 热词
     logger.info("正在加载热词...")

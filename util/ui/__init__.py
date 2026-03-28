@@ -38,6 +38,7 @@ def set_ui_logger(real_logger):
 # ============================================================
 
 from .toast import toast, toast_stream, ToastMessage, ToastMessageManager
+from .listening_overlay import ListeningOverlayManager
 from .tray import enable_min_to_tray, stop_tray
 
 __all__ = [
@@ -47,6 +48,7 @@ __all__ = [
     'toast_stream',
     'ToastMessage',
     'ToastMessageManager',
+    'ListeningOverlayManager',
     'enable_min_to_tray',
     'stop_tray',
 ]

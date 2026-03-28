@@ -72,6 +72,14 @@ def cleanup_client_resources():
     except Exception as e:
         logger.warning(f"重置状态时发生错误: {e}")
 
+    if state.listening_overlay:
+        try:
+            state.listening_overlay.shutdown()
+        except Exception as e:
+            logger.warning(f"停止倾听覆盖层时发生错误: {e}")
+        finally:
+            state.listening_overlay = None
+
     # 停止托盘图标
     try:
         from util.client.ui import stop_tray

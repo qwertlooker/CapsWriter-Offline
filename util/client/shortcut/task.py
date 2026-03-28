@@ -79,6 +79,8 @@ class ShortcutTask:
 
         # 更新录音状态
         self.state.start_recording(self.recording_start_time)
+        if self.state.listening_overlay:
+            self.state.listening_overlay.show()
 
         # 打印动画：正在录音
         self._status.start()
@@ -97,6 +99,8 @@ class ShortcutTask:
         self.is_recording = False
         self.state.stop_recording()
         self._status.stop()
+        if self.state.listening_overlay:
+            self.state.listening_overlay.hide()
 
         self.task.cancel()
         self.task = None

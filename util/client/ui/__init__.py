@@ -24,6 +24,7 @@ from util.ui import (
     ToastMessage,
     ToastMessageManager,
     ToastMessageManager,
+    ListeningOverlayManager,
     enable_min_to_tray,
     stop_tray,
 )
@@ -40,6 +41,7 @@ __all__ = [
     'toast_stream',
     'ToastMessage',
     'ToastMessageManager',
+    'ListeningOverlayManager',
     'enable_min_to_tray',
     'stop_tray',
     'on_add_rectify_record',
